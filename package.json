@@ -1,0 +1,17 @@
+{
+  "name": "tdd-practice",
+  "version": "1.0.0",
+  "description": "TDD practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stephen Done",
+  "license": "MIT",
+  "devDependencies": {
+    "protractor": "^2.0.0"
+  },
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
