@@ -4,7 +4,7 @@
   "description": "TDD practice",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "protractor e2e/protractor.conf.js"
   },
   "author": "Stephen Done",
   "license": "MIT",
