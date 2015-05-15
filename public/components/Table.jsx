@@ -21,6 +21,13 @@ export default class Table extends React.Component {
   static generateBody(numberOfColumns) {
     //TODO: implement generateBody
     //TODO: take in body values and generate cells
+
+    var cells = [];
+    for (var i = 0; i < numberOfColumns; i++) {
+      cells.push(<td key={i}></td>);
+    }
+
+    return <tbody><tr>{cells}</tr></tbody>
   }
 
   render() {
@@ -34,7 +41,7 @@ export default class Table extends React.Component {
     return <table>
       {caption}
       {head}
-      <tbody></tbody>
+      {body}
     </table>
   }
 

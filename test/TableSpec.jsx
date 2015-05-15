@@ -1,5 +1,6 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
+var _ = require('lodash');
 
 var Table = require('../public/components/Table');
 
@@ -85,6 +86,17 @@ describe('Table', () => {
 
   it('should allow for sorting', () => {
 
+  });
+
+});
+
+describe('Table.generateBody()', () => {
+
+  it('should return <tbody><tr><tr></tbody> when given zero columns', () => {
+    var result = React.renderToStaticMarkup(Table.generateBody(0));
+    var expectedResult = React.renderToStaticMarkup(<tbody><tr></tr></tbody>);
+
+    expect(result).toBe(expectedResult);
   });
 
 });
