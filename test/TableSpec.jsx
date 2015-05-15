@@ -5,13 +5,16 @@ var Table = require('../public/components/Table');
 
 describe('Table', () => {
 
-  var element, elementDOMNode, numberOfColumns;
+  var element, elementDOMNode, numberOfColumns, head, body;
 
   beforeEach(() => {
     spyOn(Table, 'generateHead').and.callThrough();
+    spyOn(Table, 'generateBody').and.callThrough();
     numberOfColumns = 3;
     element = TestUtils.renderIntoDocument(<Table columns={numberOfColumns} />);
     elementDOMNode = React.findDOMNode(element);
+    head = elementDOMNode.children[0];
+    body = elementDOMNode.children[1];
   })
 
   it('should render', () => {
@@ -30,18 +33,34 @@ describe('Table', () => {
     expect(elementDOMNode.children[1].tagName.toLowerCase()).toBe('tbody');
   });
 
-  it('should call the Table.generateHead method to be called with the number of children', () => {
+  it('should call the Table.generateHead method with the number of columns as a parameter', () => {
     expect(Table.generateHead).toHaveBeenCalledWith(numberOfColumns);
   });
 
   it('should render the specified number of columns in the head', () => {
-    var head = elementDOMNode.children[0];
-
     expect(head.children[0].children.length).toBe(numberOfColumns);
   });
 
-  it('should render the specified number of columns in the body', () => {
+  it('should have correct table row/column tags in the head', () => {
+    var tableHeaderRow = head.children[0];
 
+    var tableHeaderRowTag = tableHeaderRow.tagName.toLowerCase();
+    var tableHeaderCellTags = [].map.call(tableHeaderRow.children, (child) => {
+      return child.tagName.toLowerCase();
+    });
+
+    expect(tableHeaderRowTag).toBe('tr');
+    for (var tag of tableHeaderCellTags) {
+      expect(tag).toBe('th');
+    }
+  });
+
+  it('should call the Table.generateBody method with the number of columns as a parameter', () => {
+    expect(Table.generateBody).toHaveBeenCalledWith(numberOfColumns);
+  });
+
+  it('should render the specified number of columns in the body', () => {
+    expect(body.children[0].children.length).toBe(numberOfColumns);
   });
 
   it('should render the children into the cells', () => {
