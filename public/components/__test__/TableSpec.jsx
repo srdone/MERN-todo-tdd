@@ -2,7 +2,7 @@ var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 var _ = require('lodash');
 
-var Table = require('../public/components/Table');
+var Table = require('../Table');
 
 describe('Table', () => {
 
