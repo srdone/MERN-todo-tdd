@@ -1,6 +1,5 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var _ = require('lodash');
 
 var Table = require('../Table');
 
